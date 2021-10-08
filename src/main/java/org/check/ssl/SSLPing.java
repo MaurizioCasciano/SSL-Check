@@ -1,11 +1,13 @@
+package org.check.ssl;
+
 import javax.net.ssl.SSLParameters;
 import javax.net.ssl.SSLSocket;
 import javax.net.ssl.SSLSocketFactory;
-import java.io.OutputStream;
+import java.io.*;
 
 //https://github.com/dimalinux/SSLPing
 public class SSLPing {
-    public static boolean ping(String host, int port){
+    public static boolean ping(String host, int port) {
 
         try {
             SSLSocketFactory sslsocketfactory = (SSLSocketFactory) SSLSocketFactory.getDefault();
@@ -26,7 +28,7 @@ public class SSLPing {
 
             // If no exception happened, we connected successfully
             return true;
-        }catch (Exception e){
+        } catch (Exception e) {
             e.printStackTrace();
             return false;
         }
