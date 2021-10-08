@@ -57,4 +57,17 @@ public class KeyStoreHelper {
         context.init(keyManagers, trustManagers, null);
         return context;
     }
+
+    public static KeyStore getLetsEncryptKeyStore(){
+        // Let'sEncrypt Certificates
+        X509Certificate cert1 = CertificateLoader.loadCertificate("certs/isrg-root-x1.pem", "X509");
+        X509Certificate cert2 = CertificateLoader.loadCertificate("certs/lets-encrypt-r3.pem", "X509");
+
+        if(cert1 != null && cert2 != null) {
+            KeyStore letsEncryptKeyStore = KeyStoreHelper.getKeyStore(cert1, cert2);
+            return letsEncryptKeyStore;
+        }else {
+            return null;
+        }
+    }
 }
